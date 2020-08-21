@@ -3,11 +3,11 @@ import './styles.css';
 
 function PokemonResult(props) {
     return (
-        <div class="result row">
-            <div class="col-2">
-                <img src={props.url} className="img-thumbnail" alt="pokemon"></img>
+        <div className="result row">
+            <div className="col-2">
+                <img src={props.image} className="img-thumbnail" alt="pokemon"></img>
             </div>
-            <div class="col-10">
+            <div className="col-10">
                 <h6>{props.name}</h6>
             </div>
         </div>
