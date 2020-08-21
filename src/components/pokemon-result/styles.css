@@ -1,0 +1,9 @@
+.result{
+    height: 130px;
+    padding: 20px;
+}
+
+.result h6{
+    color: gray;
+    padding-top: 10px;
+}
