@@ -3,13 +3,15 @@ import './styles.css';
 import PokemonResult from '../PokemonResult';
 
 function PokemonList(props) {
-    const {results} = props;
+    const {results, isLoading} = props;
+    
+    if(isLoading) return "Cargando...";
+
     return (
         <div>
             {
                 results && results.length > 0? 
                     results.map((pokemon, index) => {
-                        console.log(pokemon);
                         return <PokemonResult key={index} name={pokemon.name} image={pokemon.image} /> 
                     })
                     :

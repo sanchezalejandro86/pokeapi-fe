@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import './styles.css';
-import PokemonService from '../../services/Pokemon';
 
 function SearchBox(props) {
     const [value, setValue] = useState('');
 
-    const {handleResults} = props;
+    const {onSubmit} = props;
 
     let isLoading = false;
     
@@ -13,22 +12,9 @@ function SearchBox(props) {
         setValue(event.target.value);
     }
 
-    async function handleSubmit(event) {
-
-        event.preventDefault();
-        console.log("Searching: " + value);
-        if(value){
-            isLoading = true;
-            
-            try{
-                let results = await PokemonService.find(value);
-                handleResults(results.data);
-            }finally{
-                isLoading = false;
-            }
-        }
-
-
+    function handleSubmit(event) {
+        event.preventDefault();        
+        onSubmit(value);
     }
 
     return (
@@ -39,10 +25,16 @@ function SearchBox(props) {
                             type="text" 
                             name="name" 
                             placeholder="Ingrese el nombre a buscar"
-                            value={value} onChange={handleChange}/>
+                            value={value} 
+                            onChange={handleChange}
+                            data-testid="search-input"
+                            />
                 </div>
                 <div className="col-3">
-                    <button type="submit" className="btn btn-primary btn-block" disabled={isLoading}>Buscar</button>
+                    <button type="submit" 
+                            className="btn btn-primary btn-block" 
+                            disabled={isLoading}
+                            data-testid="search-button">Buscar</button>
                 </div>
             </div>
         </form>
