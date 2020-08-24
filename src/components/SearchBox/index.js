@@ -5,8 +5,6 @@ function SearchBox(props) {
     const [value, setValue] = useState('');
 
     const {onSubmit} = props;
-
-    let isLoading = false;
     
     function handleChange(event) {
         setValue(event.target.value);
@@ -33,7 +31,7 @@ function SearchBox(props) {
                 <div className="col-3">
                     <button type="submit" 
                             className="btn btn-primary btn-block" 
-                            disabled={isLoading}
+                            disabled={value === ''}
                             data-testid="search-button">Buscar</button>
                 </div>
             </div>
